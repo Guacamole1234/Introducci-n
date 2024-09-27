@@ -10,8 +10,10 @@ public class PlayerBehaviour : MonoBehaviour
     public float movementSpeed = 5f;
     public int monedasObtenidas;
     public TextMeshProUGUI coinsText;
-    
-    
+    public AudioClip coinSFX;
+    public AudioClip specialCoinSFX;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,11 +42,13 @@ public class PlayerBehaviour : MonoBehaviour
         {
             monedasObtenidas ++; //Esto es lo mismo que poner monedasObtenidas = monedasObtenidas + 1;
             Debug.Log("He tocado una moneda :P " + "Tengo actualmente: " + monedasObtenidas + " monedas obtenidas :D");
+            AudioSource.PlayClipAtPoint(coinSFX, transform.position, 10f);
         }
         else if (other.CompareTag("CoinPower"))
         {
             monedasObtenidas += 5; //Esto es lo mismo que poner: monedasObtenidas = monedasObtenidas + 5;
             Debug.Log("#MeHeEmpoderado >:) " + "Tengo actualmente: " + monedasObtenidas + " monedas obtenidas :D");
+            AudioSource.PlayClipAtPoint(specialCoinSFX, transform.position, 10f);
         }
         /*Lo mismo que el anterior, no obstante buscando por un numbre concreto en vez de un "tag", perfecto para situaciones excepcionales
         else if (other.gameObject.name == "MonedaEmpoderada")
@@ -56,6 +60,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             coinsText.text = monedasObtenidas.ToString();
             other.gameObject.SetActive(false); //Elimina el objeto al contecto, en este caso si contiene "Coin" en el tag
+
         }
     }
 }
