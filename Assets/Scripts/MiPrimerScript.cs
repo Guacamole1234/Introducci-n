@@ -13,17 +13,12 @@ public class MiPrimerScript : MonoBehaviour
     public int primerLogroSaltos = 5;
     public int segundoLogroSaltos = 10;
     public int tercerLogroSaltos = 27;
-    // Start is called before the first frame update
+
     void Start()
     {
         numeroDeSaltos = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void OnCollisionEnter(Collision infoChoque)
     {
         numeroDeSaltos = numeroDeSaltos + 1;
